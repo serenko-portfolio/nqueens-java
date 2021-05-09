@@ -27,19 +27,19 @@ Each item of such arrays describes one diagonal line: false means there are no i
 ### Approach
 In order to make this possible we should modify backtracking procedure. We need to check if three queens are in one line. 
 There could be a lot of lines, so before actual process start we should create specific 2d array that will help us to check 
-this condition. This array contains dots and each dot contains all possible lines that could be placed.
+this condition. This array contains dots and each dot contains all possible lines that could be drown through this dot.
 Also, this array and lines should satisfy following conditions:
-- Each item of such array contains either null or at least one line object.
-- Each line object linked to several array items
-- Each line contains the number of dots that were already placed.
+- Each item of such 2d array contains either null or at least one line object.
+- Each line object linked to several 2d array items
+- Each line contains the number of queens that were already placed on that line.
 
 Each step we have actual coordinates to check, so with such array program can figure out if we should place new dots on queens field or not.  
 
 #### ArrayList vs LinkedList for lines
-Each specific 2d array coordinate contains a list of line objects to check. ArrayList implementation gives better performance for for-each operations.
+Each specific 2d array coordinate contains a list of line objects to check. There were two alternatives for such list:arrayList or LinkedList. ArrayList implementation gives better performance for for-each operations.
 
 #### MultiKeyMap vs 2d array 
-There were two alternatives: Apache MultiKeyHash Map or generic array. Generic array gives better a performance comparing to MultiKeyMap.
+There were two alternatives for diagonal fields implementation: Apache MultiKeyHash Map or generic array. Generic array gives better a performance comparing to MultiKeyMap.
 #### Line reflections
 There are also reflected lines or lines with similar angle going through a given coordinate. We can remove or ignore such duplicates and significantly increase overall speed. 
 
